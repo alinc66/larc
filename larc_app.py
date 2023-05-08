@@ -4,8 +4,8 @@ import joblib
 from PIL import Image
 
 # Loading Our final trained Knn model 
-# model= open("LARC1.pickle.dat.pkl", "rb")
-model= open("LARC.pickle.dat.pkl", "rb")
+# model= open("LARC1.pickle.dat", "rb")
+model= open("LARC.pickle.dat", "rb")
 gb_clf=joblib.load(model)
 
 
