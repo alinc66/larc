@@ -74,8 +74,8 @@ i_limfatica = st.selectbox('Invazie limfatica:', ['0', '1'])
 i_venoasa = st.selectbox('Invazie venoasa:', ['0', '1'])
 i_perineurala = st.selectbox('Invazie perineurala:', ['0', '1'])
 grading = st.selectbox('Grading:', ['1', '2', '3', '4'])
-varsta = st.number_input('Varsta in ani:', min_value=20.0, max_value=90.0, value=1.0)
-RT_CHIR = st.number_input('RT-CHIR in zile:', min_value=20.0, max_value=90.0, value=1.0)
+varsta = st.number_input('Varsta in ani:', min_value=0.1, max_value=90.0, value=1.0)
+RT_CHIR = st.number_input('RT-CHIR in zile:', min_value=0.1, max_value=90.0, value=1.0)
 
 
 if st.button('Predict TRG'):
