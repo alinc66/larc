@@ -14,7 +14,7 @@ model= open("LARC.pickle.dat", "rb")
 
 
 # Define the prediction function
-def predict(sex, pT, pN, i_limfatica, i_venoasa, i_perineurala, grading, varsta, RT-CHIR):
+def predict(sex, pT, pN, i_limfatica, i_venoasa, i_perineurala, grading, varsta, RT_CHIR):
     #Predicting the categorial features
 
     if sex == 'Female':
@@ -65,7 +65,7 @@ def predict(sex, pT, pN, i_limfatica, i_venoasa, i_perineurala, grading, varsta,
         grading = 4
     
  
-    prediction = model.predict(pd.DataFrame([[sex, pT, pN, i_limfatica, i_venoasa, i_perineurala, grading, varsta, RT-CHIR]], columns=['Sex (M/F)', 'pT', 'pN', 'invazie limfatica', 'invazie venoasa', 'invazie perineurala', 'Grading', 'Varsta', 'RT-CHIR']))
+    prediction = model.predict(pd.DataFrame([[sex, pT, pN, i_limfatica, i_venoasa, i_perineurala, grading, varsta, RT_CHIR]], columns=['Sex (M/F)', 'pT', 'pN', 'invazie limfatica', 'invazie venoasa', 'invazie perineurala', 'Grading', 'Varsta', 'RT-CHIR']))
     return prediction
 
 
@@ -81,9 +81,9 @@ i_venoasa = st.selectbox('Invazie venoasa:', ['0', '1'])
 i_perineurala = st.selectbox('Invazie perineurala:', ['0', '1'])
 grading = st.selectbox('Grading:', ['1', '2', '3', '4'])
 varsta = st.number_input('Varsta in ani:', min_value=20.0, max_value=90.0, value=1.0)
-RT-CHIR = st.number_input('RT-CHIR in zile:', min_value=20.0, max_value=90.0, value=1.0)
+RT_CHIR = st.number_input('RT-CHIR in zile:', min_value=20.0, max_value=90.0, value=1.0)
 
 
 if st.button('Predict TRG'):
-    price = predict(sex, pT, pN, i_limfatica, i_venoasa, i_perineurala, grading, varsta, RT-CHIR)
+    price = predict(sex, pT, pN, i_limfatica, i_venoasa, i_perineurala, grading, varsta, RT_CHIR)
     st.success(f'The predicted TRG of the patient is ${price[0]:.2f} USD')
