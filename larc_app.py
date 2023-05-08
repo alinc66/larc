@@ -19,7 +19,7 @@ versicolor= Image.open('versicolor.png')
 st.sidebar.title("Features")
 
 #Intializing
-parameter_list=['Sex (F,M)','pT (0,1,2,3,4)','pN (0,1,2)','invazie limfatica (0,1)','invazie venoasa (0,1)','invazie perineurala (cm)','grading (1,2,3,4)','varsta (ani)','RT-CHIR (zile)']
+parameter_list=['sex','pT','pN','i_limfatica','i_venoasa','i_perineurala','grading','varsta','RT-CHIR']
 parameter_input_values=[]
 parameter_default_values=['1.0','0.0','0.0','0.0','0.0','0.0','2.0','64.0','33.0']
 
