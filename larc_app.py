@@ -13,8 +13,8 @@ st.title("Neoadjuvant Radiochemotherapy for Locally Advanced Rectal Cancer Class
 
 #Loading images
 
-setosa= Image.open('setosa.png')
-versicolor= Image.open('versicolor.png')
+setosa= Image.open('0.png')
+versicolor= Image.open('1.png')
 
 st.sidebar.title("Features")
 
