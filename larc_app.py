@@ -9,7 +9,7 @@ model= open("LARC.pickle.dat", "rb")
 gb_clf=joblib.load(model)
 
 
-st.title("Neoadjuvant Radiochemotherapy for Locally Advanced Rectal Cancer Classification App")
+st.title("Locally Advanced Rectal Cancer TRG Classification App")
 
 #Loading images
 
