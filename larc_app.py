@@ -5,7 +5,7 @@ from PIL import Image
 
 # Loading Our final trained Knn model 
 # model= open("LARC1.pickle.dat.pkl", "rb")
-model= open("LARC.pickle.dat.pkl", "rb")
+model= open("LARC.pickle.dat", "rb")
 # xgb_clf=joblib.load(model)
 
 
