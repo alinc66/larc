@@ -36,4 +36,4 @@ st.write('\n\n')
 
 if st.button("Click Here to Classify"):
 	prediction = gb_clf.predict(input_variables)
-	st.image(setosa) if prediction == 0 else st.image(versicolor) if prediction == 1 
+	st.image(setosa) if prediction == 0 else st.image(versicolor)
