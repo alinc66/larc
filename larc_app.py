@@ -1,16 +1,10 @@
 import streamlit as st
 import pandas as pd
-import joblib
-from PIL import Image
 
 # Loading Our final trained Knn model 
 # model= open("LARC1.pickle.dat.pkl", "rb")
 model= open("LARC.pickle.dat", "rb")
 # xgb_clf=joblib.load(model)
-
-
-#Caching the model for faster loading
-@st.cache
 
 
 # Define the prediction function
