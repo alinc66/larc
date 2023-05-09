@@ -1,5 +1,5 @@
-streamlit
+streamlit==0.60.0
 pandas
 joblib
 Pillow
-scikit_learn
+scikit_learn==0.24.2
