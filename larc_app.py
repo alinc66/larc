@@ -1,10 +1,11 @@
 import streamlit as st
 import pandas as pd
+import joblib
 
-# Loading Our final trained Knn model 
-# model= open("LARC1.pickle.dat.pkl", "rb")
+# Loading Our final trained xgb model 
+# model= open("LARC1.pickle.dat", "rb")
 model= open("LARC.pickle.dat", "rb")
-# xgb_clf=joblib.load(model)
+xgb_clf=joblib.load(model)
 
 
 # Define the prediction function
@@ -79,5 +80,5 @@ RT_CHIR = st.number_input('RT-CHIR in zile:', min_value=0.1, max_value=90.0, val
 
 
 if st.button('Predict TRG'):
-    price = predict(sex, pT, pN, i_limfatica, i_venoasa, i_perineurala, grading, varsta, RT_CHIR)
+    price = xgb_clf.predict(sex, pT, pN, i_limfatica, i_venoasa, i_perineurala, grading, varsta, RT_CHIR)
     st.success(f'The predicted TRG of the patient is ${price[0]:.2f} USD')
