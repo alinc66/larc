@@ -4,7 +4,7 @@ import joblib
 from PIL import Image
 
 #Loading Our final trained Knn model 
-model= open("Knn_Classifier.pkl", "rb")
+model= open("LARC.pickle.dat", "rb")
 knn_clf=joblib.load(model)
 
 
@@ -18,9 +18,9 @@ versicolor= Image.open('1.png')
 st.sidebar.title("Features")
 
 #Intializing
-parameter_list=['Sepal length (cm)','Sepal Width (cm)','Petal length (cm)','Petal Width (cm)']
+parameter_list=['sex','pT','pN','i_limfatica','i_venoasa','i_perineurala','grading','varsta','RT_CHIR']
 parameter_input_values=[]
-parameter_default_values=['5.2','3.2','4.2','1.2']
+parameter_default_values=['1','2','0','0','1','0','3','77','29']
 
 values=[]
 
