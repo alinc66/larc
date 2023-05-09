@@ -8,7 +8,7 @@ model= open("LARC.pickle.dat", "rb")
 knn_clf=joblib.load(model)
 
 
-st.title("Iris flower species Classification App")
+st.title("Neoadjuvant Chemoradiotherapy LARC Classification App")
 
 #Loading images
 
@@ -33,6 +33,6 @@ for parameter, parameter_df in zip(parameter_list, parameter_default_values):
 input_variables=pd.DataFrame([parameter_input_values],columns=parameter_list,dtype=float)
 st.write('\n\n')
 
-if st.button("Click Here to Classify"):
+if st.button("Click Here to Classify TRG"):
 	prediction = knn_clf.predict(input_variables)
 	st.image(setosa) if prediction == 0 else st.image(versicolor)
