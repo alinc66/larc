@@ -85,4 +85,4 @@ RT_CHIR = st.number_input('RT-CHIR in zile:', min_value=0.1, max_value=90.0, val
 
 if st.button('Predict TRG'):
     prediction = xgb_clf.predict(sex, pT, pN, i_limfatica, i_venoasa, i_perineurala, grading, varsta, RT_CHIR)
-    st.image(setosa) if prediction == 0 else st.image(versicolor)  if prediction == 1
+    st.image(setosa) if prediction == 0 else st.image(versicolor)
