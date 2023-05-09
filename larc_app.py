@@ -33,6 +33,6 @@ for parameter, parameter_df in zip(parameter_list, parameter_default_values):
 input_variables=pd.DataFrame([parameter_input_values],columns=parameter_list,dtype=float)
 st.write('\n\n')
 
-if st.button("Click Here to Classify TRG"):
+if st.button("Click Here to Predict TRG"):
 	prediction = knn_clf.predict(input_variables)
 	st.image(setosa) if prediction == 0 else st.image(versicolor)
