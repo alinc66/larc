@@ -5,7 +5,7 @@ from PIL import Image
 
 #Loading Our final trained Knn model 
 model= open("LARC.pickle.dat", "rb")
-knn_clf=joblib.load(model)
+gb_clf=joblib.load(model)
 
 
 st.title("Neoadjuvant Chemoradiotherapy LARC Classification App")
@@ -34,5 +34,5 @@ input_variables=pd.DataFrame([parameter_input_values],columns=parameter_list,dty
 st.write('\n\n')
 
 if st.button("Click Here to Predict TRG"):
-	prediction = knn_clf.predict(input_variables)
+	prediction = gb_clf.predict(input_variables)
 	st.image(setosa) if prediction == 0 else st.image(versicolor)
