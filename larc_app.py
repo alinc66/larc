@@ -1,12 +1,11 @@
+from sklearn.ensemble import GradientBoostingClassifier
 import streamlit as st
 import pandas as pd
-import joblib
-from PIL import Image
 
-# Loading Our final trained xgb model 
+# Loading Our final trained gb model 
 # model= open("LARC1.pickle.dat", "rb")
-model= open("LARC.pickle.dat", "rb")
-xgb_clf=joblib.load(model)
+model= GradientBoostingClassifier(n_estimators=53, learning_rate=1.0, max_features=2, max_depth=2, random_state=0)
+model.load_model('LARC.pickle.dat')
 
 #Loading images
 setosa= Image.open('0.png')
@@ -84,5 +83,5 @@ RT_CHIR = st.number_input('RT-CHIR in zile:', min_value=0.1, max_value=90.0, val
 
 
 if st.button('Predict TRG'):
-    prediction = xgb_clf.predict(sex, pT, pN, i_limfatica, i_venoasa, i_perineurala, grading, varsta, RT_CHIR)
-    st.image(setosa) if prediction == 0 else st.image(versicolor)
+   price = predict(sex, pT, pN, i_limfatica, i_venoasa, i_perineurala, grading, varsta, RT_CHIR)
+   st.success(f'The predicted price of the diamond is ${price[0]:.2f} USD')
