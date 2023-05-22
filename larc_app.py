@@ -12,8 +12,8 @@ st.title("Neoadjuvant Chemoradiotherapy LARC Classification App")
 
 #Loading images
 
-setosa= Image.open('0.png')
-versicolor= Image.open('1.png')
+bad= Image.open('0.png')
+good= Image.open('1.png')
 
 st.sidebar.title("Features")
 
@@ -35,4 +35,4 @@ st.write('\n\n')
 
 if st.button("Click Here to Predict TRG"):
 	prediction = gb_clf.predict(input_variables)
-	st.image(setosa) if prediction == 0 else st.image(versicolor)
+	st.image(bad) if prediction == 0 else st.image(good)
