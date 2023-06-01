@@ -31,7 +31,7 @@ for parameter, parameter_df in zip(parameter_list, parameter_default_values):
 	parameter_input_values.append(values)
 	
 input_variables=pd.DataFrame([parameter_input_values],columns=parameter_list,dtype=float)
-st.markdown('\n\n')
+st.write('\n\n')
 
 if st.button("Click Here to Predict TRG"):
 	prediction = gb_clf.predict(input_variables)
