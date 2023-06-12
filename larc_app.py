@@ -69,7 +69,7 @@ bad = Image.open('0.png')
 good = Image.open('1.png')
 
 st.title('Neoadjuvant Chemoradiotherapy LARC Classification App')
-st.image("""https://www.thestreet.com/.image/ar_4:3%2Cc_fill%2Ccs_srgb%2Cq_auto:good%2Cw_1200/MTY4NjUwNDYyNTYzNDExNTkx/why-dominion-diamonds-second-trip-to-the-block-may-be-different.png""")
+st.image("""https://media.bzi.ro/unsafe/1060x596/smart/filters:contrast(5):format(webp):quality(80)/http://www.bzi.ro/wp-content/uploads/2020/03/Veste-buna-pentru-pacienti-cu-cancer-colorectal.jpg""")
 st.header('Enter the predictor variables:')
 
 sex = st.selectbox('Sex:', ['Male', 'Female'],index=0)
