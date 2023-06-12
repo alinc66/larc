@@ -3,36 +3,87 @@ import pandas as pd
 import joblib
 from PIL import Image
 
-#Loading Our final trained Knn model 
-model= open("LARC.pickle.dat", "rb")
-gb_clf=joblib.load(model)
+# Loading Our final trained Knn model
+model = open("LARC.pickle.dat", "rb")
+gb_clf = joblib.load(model)
 
 
-st.title("Neoadjuvant Chemoradiotherapy LARC Classification App")
+# Define the prediction function
+def predict(sex, pT, pN, i_limfatica, i_venoasa, i_perineurala, grading, varsta, RT_CHIR):
+    # Predicting the price of the carat
+    if sex == 'Female':
+        sex = 0
+    elif sex == 'Male':
+        sex = 1
 
-#Loading images
+    if pT == '0':
+        pT = 0
+    elif pT == '1':
+        pT = 1
+    elif pT == '2':
+        pT = 2
+    elif pT == '3':
+        pT = 3
+    elif pT == '4':
+        pT = 4
 
-bad= Image.open('0.png')
-good= Image.open('1.png')
+    if pN == '0':
+        pN = 0
+    elif pN == '1':
+        pN = 1
+    elif pN == '2':
+        pN = 2
 
-st.sidebar.title("Features")
+    if i_limfatica == 'No':
+        i_limfatica = 0
+    elif i_limfatica == 'Yes':
+        i_limfatica = 1
 
-#Intializing
-parameter_list=['sex','pT','pN','i_limfatica','i_venoasa','i_perineurala','grading','varsta','RT_CHIR']
-parameter_input_values=[]
-parameter_default_values=['1','2','0','0','1','0','3','77','29']
+    if i_venoasa == 'No':
+        i_venoasa = 0
+    elif i_venoasa == 'Yes':
+        i_venoasa = 1
 
-values=[]
+    if i_perineurala == 'No':
+        i_perineurala = 0
+    elif i_perineurala == 'Yes':
+        i_perineurala = 1
 
-#Display
-for parameter, parameter_df in zip(parameter_list, parameter_default_values):
-	
-	values= st.sidebar.slider(label=parameter, key=parameter,value=float(parameter_df), min_value=0.0, max_value=90.0, step=1.0)
-	parameter_input_values.append(values)
-	
-input_variables=pd.DataFrame([parameter_input_values],columns=parameter_list,dtype=float)
+    if grading == '1':
+        grading = 1
+    elif grading == '2':
+        grading = 2
+    elif grading == '3':
+        grading = 3
+    elif grading == '4':
+        grading = 4
+
+    prediction = gb_clf.predict(pd.DataFrame([[sex, pT, pN, i_limfatica, i_venoasa, i_perineurala, grading, varsta, RT_CHIR]],
+                                            columns=['sex', 'pT', 'pN', 'i_limfatica', 'i_venoasa', 'i_perineurala', 'grading', 'varsta',
+                                                     'RT_CHIR']))
+    return prediction
+
+# Loading images
+
+bad = Image.open('0.png')
+good = Image.open('1.png')
+
+st.title('Neoadjuvant Chemoradiotherapy LARC Classification App')
+st.image("""https://www.thestreet.com/.image/ar_4:3%2Cc_fill%2Ccs_srgb%2Cq_auto:good%2Cw_1200/MTY4NjUwNDYyNTYzNDExNTkx/why-dominion-diamonds-second-trip-to-the-block-may-be-different.png""")
+st.header('Enter the predictor variables:')
+
+sex = st.selectbox('Sex:', ['Male', 'Female'],index=0)
+pT = st.selectbox('pT:', ['0', '1', '2', '3', '4'],index=0)
+pN = st.selectbox('pN:', ['0', '1', '2'],index=0)
+i_limfatica = st.selectbox('Invazie limfatica:', ['Yes', 'No'],index=1)
+i_venoasa = st.selectbox('Invazie venoasa:', ['Yes', 'No'],index=1)
+i_perineurala = st.selectbox('Invazie perineurala:', ['Yes', 'No'],index=1)
+grading = st.selectbox('Grading:', ['1', '2', '3', '4'],index=0)
+varsta = st.number_input('Varsta in ani:', min_value=0.0, max_value=100.0, value=15.0,step = 1.0)
+RT_CHIR = st.number_input('Distanta de la RT la CH in zile:', min_value=0.0, max_value=70.0, value=20.0,step=1.0)
+
 st.write('\n\n')
 
 if st.button("Click Here to Predict TRG"):
-	prediction = gb_clf.predict(input_variables)
-	st.image(bad) if prediction == 0 else st.image(good)
+    pred = predict(sex, pT, pN, i_limfatica, i_venoasa, i_perineurala, grading, varsta, RT_CHIR)
+    st.image(bad) if pred == 0 else st.image(good)
