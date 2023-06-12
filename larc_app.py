@@ -67,7 +67,8 @@ def predict(sex, pT, pN, i_limfatica, i_venoasa, i_perineurala, grading, varsta,
 
 bad = Image.open('0.png')
 good = Image.open('1.png')
-header = Image.open('head_image.png')
+#header = Image.open('head_image.png')
+header = Image.open('head_image.png').convert('RGB').save('new_head_image.png')
 
 st.title('Neoadjuvant Chemoradiotherapy LARC Classification App')
 st.image(header)
