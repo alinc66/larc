@@ -82,7 +82,7 @@ grading = st.selectbox('Grading:', ['1', '2', '3', '4'],index=0)
 varsta = st.number_input('Varsta in ani:', min_value=0.0, max_value=100.0, value=15.0,step = 1.0)
 RT_CHIR = st.number_input('Distanta de la RT la CHT in zile:', min_value=0.0, max_value=70.0, value=20.0,step=1.0)
 
-st.markdown('\n\n')
+#st.markdown('\n\n')
 
 if st.button("Click Here to Predict TRG"):
     pred = predict(sex, pT, pN, i_limfatica, i_venoasa, i_perineurala, grading, varsta, RT_CHIR)
